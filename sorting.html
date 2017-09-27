@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Sorting</title>
+</head>
+<body>
+	<div class = "first">
+		<ul id= "bands"></ul>
+    </div>
+    <style type="text/css">
+		html{
+			background: url("./images/img.jpg");
+			
+		}
+		.first{
+			min-height: 100vh;
+			align-items: center;
+			justify-content: center;
+			display: flex;
+		}
+		ul{
+		   padding-top: 5vh;
+           background: orange;
+           width: 30vh;
+           height: 50vh;
+           line-height: 25px;
+           letter-spacing: 1px;
+
+		}
+	</style>
+
+	<script type="text/javascript">
+		//for sorting the array
+		const bands = ['The Plot in You', 'The Devil Wears Prada','Pierce the Veil', 'Norma Jean','The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans','Counterparts','Oh, Sleeper', 'A Skylit Drive','Anywhere But Here' , 'An Old Dog' ];
+		//removing articles from the front a,an,the
+		function strip(bandName){
+			return bandName.replace(/^(a |the |an )/i, '').trim();
+		}
+		//using strip will not change the original array here it will just ignore the article if any infront and then sort it.
+    	const sortedBands = bands.sort((a,b) =>
+    		strip(a) > strip(b) ? 1:-1);
+    	//console.log(sortedBands);
+
+    	document.querySelector('#bands').innerHTML= sortedBands.map(
+    		band => `<li>${band}</li>`).join('');
+
+	</script>
+</body>
+</html>
